@@ -17,12 +17,15 @@
 
 - [18:27 - MOTX/Moxt 软件研发范式研究增量记录](logs/2026-05-01/18-27.md)
 - [19:00 - MOTX/Moxt 软件研发范式研究增量记录：6+2 AI 同事模型](logs/2026-05-01/19-00.md)
+- [20:27 - MOTX/Moxt 软件研发范式研究增量记录：角色自治等级与研发对象协议](logs/2026-05-01/20-27.md)
 
 ## 当前阶段性结论
 
 Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器”，而是做“AI 研发组织的工作空间”。核心价值是让多个 AI 同事在共享上下文、受控权限和可审计产物中协作，把研发流程从人类手工串行推进，升级为 AI 持续并行推进、人类重点审查决策。
 
-本轮进一步确认：Moxt 更适合作为研发组织的 agent operating layer，站在 Cursor、Claude Code、GitHub、Slack、文档系统之上，承担团队 AI 同事编排、共享记忆、规则治理、工具权限和研发对象图谱维护。
+进一步确认：Moxt 更适合作为研发组织的 agent operating layer，站在 Cursor、Claude Code、GitHub、Slack、文档系统之上，承担团队 AI 同事编排、共享记忆、规则治理、工具权限和研发对象图谱维护。
+
+最新设计判断：Moxt/MOTX 在软件研发里的关键产品形态不是 AI coding IDE，而是 AI-native engineering workspace。它应承担研发上下文总线、AI 同事运行环境、研发对象状态机和治理控制面四个角色。
 
 ## 当前推荐 AI 同事组合
 
@@ -44,11 +47,13 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 - 评价 AI 研发系统不能只看编码 benchmark，而要看真实研发效率、质量、成本和风险。
 - 多 AI 并行需要 Coordinator 负责任务锁、交接、冲突检测和升级机制。
 - 软件研发场景需要单独的 Security & Compliance Sentinel，而不是把安全职责完全分散给 Reviewer。
+- AI 同事设计应采用 8 个角色 × 5 级自治能力：角色决定职责边界，自治等级决定工具权限，对象状态决定下一步行动，风险等级决定是否需要人类审批。
+- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill 设置来源、置信度、风险等级、审批要求和关联对象。
 
 ## 后续研究重点
 
-1. 为 8 个 AI 同事分别设计 System Prompt、Skills、Rules 和权限模板。
-2. 设计 Moxt × GitHub 的 issue -> branch -> PR -> review -> release 具体对象模型。
-3. 建立 AI 生成 PR 的评分表，包括正确性、可维护性、安全性、测试覆盖、需求一致性。
-4. 研究 Coordinator 的任务锁、冲突检测、状态机和升级机制。
-5. 持续跟踪 Moxt、AI coding agent、SWE-bench Live/Pro、团队级 agent orchestrator 的新进展。
+1. 为 8 个 AI 同事设计一套“角色 × 自治等级”权限矩阵。
+2. 为研发对象协议补充具体字段模板，例如 Requirement.yaml、Task.yaml、PR.yaml、Release.yaml。
+3. 设计 Moxt × GitHub 的最小可行闭环：Goal -> Requirement -> Issue -> Branch -> PR -> Review -> Test -> Release Notes。
+4. 设计 Candidate Memory 到 Approved Memory 的治理流程。
+5. 研究 AI 同事之间的任务锁协议：文件锁、模块锁、对象锁、意图声明和冲突仲裁。
