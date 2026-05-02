@@ -40,6 +40,13 @@
 - [13:27 - Moxt 进入多 Agent 调度与解空间搜索阶段](logs/2026-05-02/13-27.md)
 - [14:28 - Moxt 进入可学习编排系统阶段（Learning Orchestrator）](logs/2026-05-02/14-28.md)
 - [15:27 - 证据优先的 AI Engineering Control Workspace](logs/2026-05-02/15-27.md)
+- [16:27 - Evidence-Gated Agentic Development 与 AI 变更控制系统](logs/2026-05-02/16-27.md)
+- [17:27 - Agent Identity Boundary 与非人类身份治理](logs/2026-05-02/17-27.md)
+- [18:27 - Agent Sandbox 与执行隔离层](logs/2026-05-02/18-27.md)
+- [19:27 - Verification Pipeline DSL 与验证编排层](logs/2026-05-02/19-27.md)
+- [20:27 - Decision Engine 与可解释发布决策系统](logs/2026-05-02/20-27.md)
+- [21:27 - Control Contract System 与行为约束协议层](logs/2026-05-02/21-27.md)
+- [22:27 - Stateful Learning Loop 与系统级自进化机制](logs/2026-05-02/22-27.md)
 
 ## 当前阶段性结论
 
@@ -47,17 +54,21 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 
 进一步确认：Moxt 更适合作为研发组织的 agent operating layer，站在 Cursor、Claude Code、GitHub、Slack、文档系统之上，承担团队 AI 同事编排、共享记忆、规则治理、工具权限和研发对象图谱维护。
 
-最新设计判断：Moxt/MOTX 在软件研发里的关键产品形态不是 AI coding IDE，而是 AI-native engineering workspace。它应承担研发上下文总线、AI 同事运行环境、研发对象状态机和治理控制面四个角色。
+最新综合结论：Moxt 的核心正在从 Agent 管理演进为 Task + Agent + Constraint 三位一体系统，并进一步演进为可执行、可验证、可收敛、可优化、可对齐、可解释、可隔离、可学习的 AI 工程组织操作系统。
 
-最新综合结论：Moxt 的核心正在从 Agent 管理演进为 Task + Agent + Constraint 三位一体系统，并进一步演进为可执行、可验证、可收敛、可优化、可对齐、可解释的 AI 工程组织操作系统。
-
-最新推进：Moxt 的核心不只是管理 agent，而是把软件研发转化为一个可控的搜索与验证系统。TaskGraph 不应只是任务列表，而应成为 DAG + Runtime State + Budget + Risk + Agent Binding 的调度运行时。
+最新推进：Moxt 的核心不只是管理 agent，而是把软件研发转化为一个可控的搜索、执行、验证、决策与学习系统。TaskGraph 不应只是任务列表，而应成为 DAG + Runtime State + Budget + Risk + Agent Binding 的调度运行时。
 
 最新收敛：Moxt 应成为 AI Engineering Delegation & Verification Workspace，通过 DelegationSpec 把任务委派给外部 / 内部 coding agent，并用 DeliveryContract、RiskBudget、Agent Reputation 和人类审批完成可控收敛。
 
 最新升级：Moxt 更接近 AI Workflow Runtime + Delegation OS + Memory System + Governance Layer。软件研发的核心不只是让 AI 写代码，而是约束、调度、验证和治理 AI 行为，把 AI 的不确定性限制在可验证边界内。
 
 最新范式：Moxt 应从“任务中心”进一步升级为“证据中心”。核心链路是 Intent → Spec → Delivery Contract → Change Set → Evidence Pack → Release Decision → Outcome Memory；完成状态不由执行 AI 自己声明，而由证据协议判定。
+
+最新定位：Moxt 应成为 AI 生成软件变更的“控制塔”和“证据门禁”。产品核心应围绕 Evidence-Gated Agentic Development：IntentSpec、ChangePlan、Delegation Control、Agent Sandbox、EvidencePack、RiskProfile、ReleaseDecision、OutcomeMemory。
+
+最新闭环：Moxt 的控制面已经形成 Identity → Permission → Sandbox → ExecutionTrace → Evidence → Decision 的基础闭环，并进一步演化为 Contract → Identity → Permission → Sandbox → Execution → Verification → Evidence → Decision → Outcome → Learning → Evolution。
+
+最新本质：Moxt 不只是 AI 变更控制系统，而是 AI 工程身份 + 权限 + 隔离执行 + 验证编排 + 可解释决策 + 系统级学习的统一控制面。最终定位可表述为：Self-Evolving AI Software Engineering Control Plane。
 
 ## 当前推荐 AI 同事组合
 
@@ -92,6 +103,25 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 3. Evidence Reviewer / 证据审查员
 4. Release Governor / 发布治理员
 
+### 变更控制责任链 MVP
+
+1. Intent Clarifier / 意图澄清 AI
+2. Change Planner / 变更规划 AI
+3. Implementation Worker / 实现 AI
+4. Evidence Builder / 证据构建 AI
+5. Risk & Security Sentinel / 风险安全 AI
+6. Release Governor / 发布治理 AI
+
+### 系统级控制角色
+
+1. Agent Identity Steward / AI 身份管理员
+2. Sandbox Orchestrator / 执行隔离调度器
+3. Verification Architect / 验证架构师
+4. Decision Engine / 发布决策引擎
+5. Control Contract Designer / 行为约束设计 AI
+6. Outcome Analyst / 结果分析 AI
+7. Evolution Engine / 策略进化引擎
+
 补充：Agent Adapter 不是独立 AI 同事，而是连接 Copilot、Codex、Claude Code、Cursor、内部 agent 的外部 agent 适配层。
 
 ## 当前核心设计判断
@@ -104,7 +134,7 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 - 多 AI 并行需要 Coordinator / Orchestrator 负责任务锁、交接、冲突检测、候选方案生成、早停和升级机制。
 - 软件研发场景需要单独的 Security & Compliance Sentinel，而不是把安全职责完全分散给 Reviewer。
 - AI 同事设计应采用角色 × 自治等级：角色决定职责边界，自治等级决定工具权限，对象状态决定下一步行动，风险等级决定是否需要人类审批。
-- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill、AgentSession、ActionIntent、DeliveryContract、DecisionGraph、DelegationSpec、ControlContract、SolutionSet、StrategyMemory、ExperienceRecord、EvidencePack 设置来源、置信度、风险等级、审批要求和关联对象。
+- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill、AgentSession、ActionIntent、DeliveryContract、DecisionGraph、DelegationSpec、ControlContract、SolutionSet、StrategyMemory、ExperienceRecord、EvidencePack、IntentSpec、ChangePlan、RiskProfile、ReleaseDecision、AgentPerformanceRecord、AgentIdentity、PermissionGrant、DelegationChain、AgentSandbox、ToolProxy、ExecutionTrace、VerificationPipeline、VerificationResult、DecisionPolicy、DecisionTrace、BehaviorTrace、OutcomeRecord、LearningSignal、EvolutionAction 设置来源、置信度、风险等级、审批要求和关联对象。
 - 所有高风险工具调用都应先结构化为 ActionIntent，再经过风险分级、dry-run、影响范围分析、回滚计划和审批。
 - 外部 coding agent 应被视为可插拔 worker，并通过 Agent Adapter 接入 Moxt 的对象协议、权限系统和审计链路。
 - 长生命周期 agent 必须纳入 Lifecycle Control Plane，支持 TTL、健康检查、kill fast、资源回收和幽灵任务清理。
@@ -115,23 +145,34 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 - Strategy Layer、Economic Layer、Incentive Layer、Interpretability & Governance Layer 分别解决全局最优、资源最优、行为对齐和可信治理问题。
 - TaskGraph Runtime 是下一阶段核心突破点：它需要支持动态插入节点、执行中重新拆任务、候选 PR 自动评分、失败后任务演化，以及映射到 GitHub issue / PR / check。
 - DelegationSpec 是 Moxt 进入“可验证委派层”的关键对象：它定义任务类型、委派模式、候选 agent、上下文包、权限预算、风险预算、验证契约、超时策略和期望产物。
-- ControlContract 是约束 AI 行为的关键对象：它定义 allowed_actions、forbidden_actions、required_verifications、risk_budget、escalation_rules。
+- ControlContract 是约束 AI 行为的关键对象：它定义 allowed_actions、forbidden_actions、required_verifications、risk_budget、escalation_rules，并与 VerificationPipeline 对齐。
 - Moxt 不应默认选择“第一个完成的 agent”，而应根据 DeliveryContract、风险、成本、可维护性、测试信心和 Agent Reputation 综合选择候选结果。
 - SolutionSet / SolutionGraph 把研发从单路径执行转为多候选解搜索；SelectionPolicy 决定如何在质量、成本、延迟和风险之间权衡。
 - Learning Controller 与 StrategyMemory 使 Moxt 从编排系统进化为可学习系统：Execution → Result → Evaluation → Strategy Update → Next Execution。
 - Evidence Pack 和 Release Decision 是证据优先范式的关键：把 AI 审查、测试、静态分析、风险说明和发布门禁标准化。
+- Evidence-Gated Agentic Development 是当前最可落地的软件研发作业范式：AI 不是提交完成结果，而是提交候选变更；系统通过 EvidencePack、RiskProfile 和 ReleaseDecision 决定是否接受。
+- Moxt 应围绕 Change Acceptance 而不是 Code Generation 设计产品：关键不是哪个 agent 最会写代码，而是在什么任务、风险、上下文、验证证据下，哪个 agent 的哪个变更可以被接受。
+- AgentIdentity / PermissionGrant / DelegationChain 解决“哪个 AI 身份在什么授权边界内完成了什么变更”的问题。
+- AgentSandbox / ToolProxy / ExecutionTrace 解决“agent 在哪里执行、如何调用工具、做了什么”的问题。
+- VerificationPipeline / VerificationResult / EvidenceSchema 解决“证据如何被生产出来”的问题。
+- DecisionEngine / DecisionPolicy / DecisionTrace 解决“如何基于证据做出可解释接受决策”的问题。
+- OutcomeRecord / LearningSignal / EvolutionAction 解决“系统如何从真实结果中持续进化”的问题。
 
 ## 后续研究重点
 
-1. 设计 Delivery Contract 的字段标准和不同风险等级模板。
-2. 设计 Evidence Pack 的机器可读 schema，支持 Release Governor 自动消费。
-3. 设计 Agent Reputation System：任务类型画像、成功率、失败模式、上下文敏感性、成本和风险倾向。
-4. 设计 TaskGraph Runtime：DAG、Runtime State、Budget、Risk、Agent Binding、动态插入节点。
-5. 设计 Candidate PR / SolutionSet 评分模型：quality、risk、cost、diff size、test confidence、delivery contract confidence。
-6. 设计 GitHub 映射方案：TaskGraph 如何落到 issue、branch、draft PR、check run、review、release。
-7. 设计 Governance Policy DSL，定义权限、审计、解释、审批和软/硬治理规则。
-8. 设计 DelegationSpec × ControlContract 的统一模型。
-9. 设计 Verification Pipeline DSL 与 Release Decision 策略矩阵。
-10. 设计 StrategyMemory 与 ExperienceRecord 数据结构，支持 Moxt 形成可学习编排能力。
-11. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory、delegation-spec、control-contract、evidence-pack、strategy-memory。
-12. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile、DeliveryContract、TaskEvolutionLog、StrategySnapshot、IncentiveProfile、DecisionGraph、DelegationSpec 等对象规范。
+1. 设计 AgentIdentity schema 与 agent registry。
+2. 设计 PermissionGrant 的语义权限模型，区分 file scope、tool scope、data scope、runtime scope。
+3. 设计 DelegationChain 可视化：从 human intent 到 release decision 的完整责任链。
+4. 设计 Sandbox Runtime 架构选择：container vs microVM vs WASM，不同风险等级映射。
+5. 设计 Tool Proxy DSL：声明 tool 权限、参数级控制、审计规则。
+6. 设计 ExecutionTrace → EvidencePack 映射规则。
+7. 设计 Verification Pipeline DSL：YAML vs code-based、可组合性、模板系统。
+8. 设计 Verification cost model：时间 vs 覆盖率 vs 风险。
+9. 设计 Decision Engine scoring model：融合 risk、quality、cost、confidence、agent reputation。
+10. 设计 DecisionPolicy DSL 与 human override 机制。
+11. 设计 Control Contract DSL：可组合规则、可继承模板、轻量/严格策略。
+12. 设计 Contract × Verification 对齐机制。
+13. 设计 Learning Signal 标注体系与 Policy 更新安全机制，避免误学习。
+14. 设计 Evolution 审批流程与 Explainable Evolution。
+15. 设计 Memory Safety 机制：哪些内容可以进入长期记忆，哪些必须标记为 tentative / expired / human-verified。
+16. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory、delegation-spec、control-contract、evidence-pack、strategy-memory、release-decision、agent-identity、permission-grant、verification-pipeline、decision-policy、learning-signal。
