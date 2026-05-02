@@ -167,6 +167,213 @@ True Efficiency = 有效交付价值 / 总资源消耗
 
 核心对象：Decision Graph、Decision Explanation、Governance Report、Human Override Record。
 
+### 2.13 架构图
+
+#### 2.13.1 总体分层架构图
+
+```mermaid
+flowchart TB
+    A[Human / Team<br/>产品经理 / 架构师 / 工程师 / 审批人] --> B[Moxt AI-Native Engineering Workspace]
+
+    subgraph B[Moxt AI-Native Engineering Workspace]
+        direction TB
+        B1[Goal / Requirement / Design Layer<br/>目标、需求、设计]
+        B2[Task Structuring Engine<br/>TaskGraph / Handoff Packet / SemanticScope]
+        B3[Delegation Control Plane<br/>Agent Selection / DelegationSpec / Budget / Risk]
+        B4[Agent Runtime Control Plane<br/>AgentSession / Worktree / Sandbox / Retry / TTL]
+        B5[Verification & Delivery Layer<br/>DeliveryContract / Review / QA / Delivery Audit]
+        B6[Governance & Permission Layer<br/>ActionIntent / Semantic Permission / Human Gate]
+        B7[Memory & Optimization Layer<br/>Memory / Rule / Skill / Reputation / Strategy]
+    end
+
+    B --> C[External / Internal Coding Agents<br/>Codex / Copilot / Claude Code / Internal Agents]
+    C --> D[Code Repository / CI / PR System<br/>GitHub / GitLab / CI/CD]
+    D --> B
+    B --> E[Knowledge Base / Docs / Incidents / Metrics]
+    E --> B
+```
+
+#### 2.13.2 12 层能力模型图
+
+```mermaid
+flowchart TB
+    L1[1. Task Structuring Engine]
+    L2[2. Agent Adapter Layer]
+    L3[3. Semantic Permission Layer]
+    L4[4. Agent Runtime Control Plane]
+    L5[5. Review & Release Governance Layer]
+    L6[6. Organizational Memory Layer]
+    L7[7. Verifiable Delivery Layer]
+    L8[8. Task Feedback & Evolution Layer]
+    L9[9. Strategy & Global Optimization Layer]
+    L10[10. Economic & Resource Allocation Layer]
+    L11[11. Incentive & Alignment Layer]
+    L12[12. Interpretability & Governance Layer]
+
+    L1 --> L2 --> L3 --> L4 --> L5 --> L6
+    L6 --> L7 --> L8 --> L9 --> L10 --> L11 --> L12
+```
+
+#### 2.13.3 核心运行闭环图
+
+```mermaid
+flowchart LR
+    A[Goal] --> B[Requirement Card]
+    B --> C[Design Note]
+    C --> D[TaskGraph]
+    D --> E[DelegationSpec]
+    E --> F[Agent Session]
+    F --> G[Candidate Patch / Draft PR]
+    G --> H[Verification Run]
+    H --> I[Delivery Audit]
+    I --> J{Human Gate?}
+    J -- Yes --> K[Human Review / Approval]
+    J -- No --> L[Merge / Release]
+    K --> L
+    L --> M[Memory Update]
+    M --> N[Agent Reputation Update]
+    N --> O[Strategy / Optimization Feedback]
+    O --> D
+```
+
+#### 2.13.4 TaskGraph Runtime 架构图
+
+```mermaid
+flowchart TB
+    subgraph TG[TaskGraph Runtime]
+        direction TB
+        T1[Task Node<br/>type / dependency / risk / budget]
+        T2[Scheduler<br/>ready queue / retry / timeout]
+        T3[Agent Binder<br/>agent selection / delegation mode]
+        T4[Execution State<br/>pending / running / blocked / failed / success]
+        T5[Verification Node<br/>test / audit / review]
+        T6[Task Evolution<br/>refine / split / re-plan]
+    end
+
+    T1 --> T2
+    T2 --> T3
+    T3 --> T4
+    T4 --> T5
+    T5 --> T6
+    T6 --> T1
+```
+
+#### 2.13.5 可验证委派架构图
+
+```mermaid
+flowchart LR
+    A[TaskGraph Node] --> B[DelegationSpec]
+
+    subgraph B[DelegationSpec]
+        direction TB
+        B1[Task Type]
+        B2[Delegation Mode]
+        B3[Candidate Agents]
+        B4[Context Package]
+        B5[Permission Budget]
+        B6[Risk Budget]
+        B7[Verification Contract]
+        B8[Timeout / Retry Policy]
+    end
+
+    B --> C[Agent Coordinator]
+    C --> D1[Codex]
+    C --> D2[GitHub Copilot]
+    C --> D3[Claude Code]
+    C --> D4[Internal Agent]
+
+    D1 --> E[Candidate PR / Patch]
+    D2 --> E
+    D3 --> E
+    D4 --> E
+
+    E --> F[Delivery Auditor]
+    F --> G[Scoring / Ranking]
+    G --> H{Human Approval Needed?}
+    H -- Yes --> I[Human Gate]
+    H -- No --> J[Merge / Release]
+    I --> J
+```
+
+#### 2.13.6 权限与治理架构图
+
+```mermaid
+flowchart TB
+    A[Agent Action] --> B[ActionIntent]
+    B --> C[Semantic Permission Check]
+    C --> D{Risk Level}
+
+    D -- Low --> E[Auto Allow]
+    D -- Medium --> F[Sentinel Review]
+    D -- High --> G[Human Approval]
+    D -- Critical --> H[Block / Escalate]
+
+    F --> I{Pass?}
+    I -- Yes --> E
+    I -- No --> H
+
+    G --> J{Approved?}
+    J -- Yes --> E
+    J -- No --> H
+
+    E --> K[Execute in Repo / CI / Sandbox]
+```
+
+#### 2.13.7 AI 同事协作图
+
+```mermaid
+flowchart LR
+    A[Product Analyst] --> B[Tech Lead]
+    B --> C[Task Architect]
+    C --> D[Agent Coordinator]
+    D --> E[Implementation Engineer / External Agents]
+    E --> F[Reviewer]
+    E --> G[QA / Release Guardian]
+    E --> H[Delivery Auditor]
+    F --> I[Human Gate]
+    G --> I
+    H --> I
+    I --> J[Merge / Release]
+    J --> K[Knowledge Steward]
+    K --> L[Memory / Rule / Skill / Reputation]
+    L --> C
+    L --> D
+```
+
+#### 2.13.8 Agent Workbench 视图结构图
+
+```mermaid
+flowchart TB
+    W[Agent Workbench]
+
+    W --> A[Task Overview]
+    W --> B[Delegation Panel]
+    W --> C[Execution Timeline]
+    W --> D[Candidate Comparison]
+    W --> E[Verification Status]
+    W --> F[Risk & Permission]
+    W --> G[Decision Log]
+
+    A --> A1[Task Status / Dependency / Owner]
+    B --> B1[Agent Selection / Budget / Mode]
+    C --> C1[Started / Risk Triggered / Approved / Completed]
+    D --> D1[Cost / Risk / Diff / Delivery Score]
+    E --> E1[Test / Audit / Contract Fit]
+    F --> F1[ActionIntent / Semantic Risk / Human Gate]
+    G --> G1[Why this agent / Why this PR / Why blocked]
+```
+
+#### 2.13.9 架构图解读
+
+以上架构图表达了 Moxt 的几个核心设计判断：
+
+1. **Moxt 不是单一 coding agent**：它位于人类团队、外部 agent、代码仓库、CI/CD、知识库之间，本质是研发组织的控制面与工作空间。
+2. **TaskGraph 是运行时系统，不是任务清单**：每个任务节点都应带有依赖、风险、预算、候选 agent 和验证要求，可以在执行中被重规划、拆分和演化。
+3. **DelegationSpec 是委派层的核心对象**：它把“把任务交给 agent”从口头操作，变成结构化、可追踪、可审计的工程协议。
+4. **DeliveryContract 是验证层核心**：系统不是选择“谁先完成”，而是选择“谁最符合交付目标、风险要求和成本约束”。
+5. **ActionIntent + Semantic Permission + Human Gate 构成治理闭环**：高风险动作不能直接执行，必须在权限、风险和审批边界内运行。
+6. **Memory / Reputation / Strategy 构成复利层**：每次任务执行都会反哺组织知识，系统会逐步学会什么任务适合什么 agent、什么模式高风险、什么验证最有效。
+
 ---
 
 ## 3. AI 同事体系设计
@@ -251,6 +458,11 @@ ExecutionPlan
 IncentiveProfile
 DecisionGraph
 GovernanceReport
+DelegationSpec
+ControlContract
+SolutionSet
+StrategyMemory
+ExperienceRecord
 ```
 
 ### 4.2 统一对象元数据
