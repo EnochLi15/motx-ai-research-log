@@ -4,7 +4,7 @@
 
 ### 全量设计文档
 
-- [全量设计方案](docs/full-design.md)
+- [全量设计方案 V2](docs/full-design.md)
 - [AI 同事角色设计](docs/ai-teammates.md)
 - [AI 原生工作空间架构](docs/workspace-architecture.md)
 - [软件研发 AI 原生作业范式](docs/workflow.md)
@@ -32,6 +32,8 @@
 - [05:27 - MOTX/Moxt 软件研发范式研究增量记录：Economic Layer 与资源优化](logs/2026-05-02/05-27.md)
 - [06:27 - MOTX/Moxt 软件研发范式研究增量记录：Incentive Layer 与行为对齐](logs/2026-05-02/06-27.md)
 - [07:28 - MOTX/Moxt 软件研发范式研究增量记录：Interpretability & Governance Layer](logs/2026-05-02/07-28.md)
+- [08:28 - MOTX/Moxt 软件研发范式研究增量记录：AI Engineering Control Plane](logs/2026-05-02/08-28.md)
+- [09:28 - MOTX/Moxt 软件研发范式研究增量记录：TaskGraph Runtime 与可控搜索验证系统](logs/2026-05-02/09-28.md)
 
 ## 当前阶段性结论
 
@@ -43,18 +45,25 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 
 最新综合结论：Moxt 的核心正在从 Agent 管理演进为 Task + Agent + Constraint 三位一体系统，并进一步演进为可执行、可验证、可收敛、可优化、可对齐、可解释的 AI 工程组织操作系统。
 
+最新推进：Moxt 的核心不只是管理 agent，而是把软件研发转化为一个可控的搜索与验证系统。TaskGraph 不应只是任务列表，而应成为 DAG + Runtime State + Budget + Risk + Agent Binding 的调度运行时。
+
 ## 当前推荐 AI 同事组合
+
+### MVP 核心 7 个 AI 同事
 
 1. Product Analyst / 需求研究 AI
 2. Tech Lead / 架构拆解 AI
-3. Implementation Engineer / 编码实现 AI
-4. Reviewer / 代码审查 AI
-5. QA / Release Guardian AI
-6. Knowledge Steward / 知识管家 AI
-7. Coordinator / 研发协调 AI
-8. Security & Compliance Sentinel / 安全合规 AI
-9. Lifecycle Manager / 生命周期管理 AI
-10. Task Architect / 任务架构师
+3. Task Architect / 任务架构师
+4. Implementation Engineer / 编码实现 AI
+5. Reviewer / 代码审查 AI
+6. QA / Release Guardian AI
+7. Knowledge Steward / 知识管家 AI
+
+### 企业增强型 AI 同事
+
+8. Coordinator / 研发协调 AI
+9. Security & Compliance Sentinel / 安全合规 AI
+10. Lifecycle Manager / 生命周期管理 AI
 11. Delivery Auditor / 交付审计 AI
 12. Task Critic / 任务批判 AI
 13. Strategy Planner / 策略规划 AI
@@ -85,13 +94,15 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 - Delivery Contract 与 Delivery Auditor 应成为判断“PR 是否真的完成目标”的核心机制。
 - Task Critic 与 Task Evolution Log 应帮助系统区分 task failure、execution failure、verification failure，并推动任务持续收敛。
 - Strategy Layer、Economic Layer、Incentive Layer、Interpretability & Governance Layer 分别解决全局最优、资源最优、行为对齐和可信治理问题。
+- TaskGraph Runtime 是下一阶段核心突破点：它需要支持动态插入节点、执行中重新拆任务、候选 PR 自动评分、失败后任务演化，以及映射到 GitHub issue / PR / check。
 
 ## 后续研究重点
 
-1. 设计 Decision Graph 存储与查询结构：图数据库 vs event log。
-2. 设计 Governance Policy DSL，定义权限、审计、解释、审批和软/硬治理规则。
-3. 设计 AI 同事角色合并与最小化方案，避免角色过度膨胀。
-4. 把当前 18 类 AI 同事压缩成 MVP 版本的 5-7 个核心数字员工。
-5. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory。
-6. 设计组织内 benchmark 与 Agent Reputation System。
-7. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile、DeliveryContract、TaskEvolutionLog、StrategySnapshot、IncentiveProfile、DecisionGraph 等对象规范。
+1. 设计 TaskGraph Runtime：DAG、Runtime State、Budget、Risk、Agent Binding、动态插入节点。
+2. 设计 Candidate PR 评分模型：quality、risk、cost、diff size、test confidence、delivery contract confidence。
+3. 设计 GitHub 映射方案：TaskGraph 如何落到 issue、branch、draft PR、check run、review、release。
+4. 设计 Governance Policy DSL，定义权限、审计、解释、审批和软/硬治理规则。
+5. 设计 AI 同事角色合并与最小化方案，避免角色过度膨胀。
+6. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory。
+7. 设计组织内 benchmark 与 Agent Reputation System。
+8. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile、DeliveryContract、TaskEvolutionLog、StrategySnapshot、IncentiveProfile、DecisionGraph 等对象规范。
