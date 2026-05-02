@@ -25,6 +25,13 @@
 #### 2026-05-02
 
 - [00:28 - MOTX/Moxt 软件研发范式研究增量记录：Task Structuring Engine 与 Semantic Permission](logs/2026-05-02/00-28.md)
+- [01:28 - MOTX/Moxt 软件研发范式研究增量记录：Agent HQ 化与任务交接层](logs/2026-05-02/01-28.md)
+- [02:27 - MOTX/Moxt 软件研发范式研究增量记录：Verifiable Delivery Protocol](logs/2026-05-02/02-27.md)
+- [03:27 - MOTX/Moxt 软件研发范式研究增量记录：Adaptive Task-Verification Loop](logs/2026-05-02/03-27.md)
+- [04:27 - MOTX/Moxt 软件研发范式研究增量记录：Strategy Layer 与全局优化](logs/2026-05-02/04-27.md)
+- [05:27 - MOTX/Moxt 软件研发范式研究增量记录：Economic Layer 与资源优化](logs/2026-05-02/05-27.md)
+- [06:27 - MOTX/Moxt 软件研发范式研究增量记录：Incentive Layer 与行为对齐](logs/2026-05-02/06-27.md)
+- [07:28 - MOTX/Moxt 软件研发范式研究增量记录：Interpretability & Governance Layer](logs/2026-05-02/07-28.md)
 
 ## 当前阶段性结论
 
@@ -34,7 +41,7 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 
 最新设计判断：Moxt/MOTX 在软件研发里的关键产品形态不是 AI coding IDE，而是 AI-native engineering workspace。它应承担研发上下文总线、AI 同事运行环境、研发对象状态机和治理控制面四个角色。
 
-最新综合结论：Moxt 的核心正在从 Agent 管理演进为 Task + Agent + Constraint 三位一体系统。成功率 = Task 质量 × Agent 能力 × 约束强度；其中 Task 质量与约束强度都可由 Moxt 控制。
+最新综合结论：Moxt 的核心正在从 Agent 管理演进为 Task + Agent + Constraint 三位一体系统，并进一步演进为可执行、可验证、可收敛、可优化、可对齐、可解释的 AI 工程组织操作系统。
 
 ## 当前推荐 AI 同事组合
 
@@ -48,32 +55,43 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 8. Security & Compliance Sentinel / 安全合规 AI
 9. Lifecycle Manager / 生命周期管理 AI
 10. Task Architect / 任务架构师
+11. Delivery Auditor / 交付审计 AI
+12. Task Critic / 任务批判 AI
+13. Strategy Planner / 策略规划 AI
+14. Architecture Governor / 架构治理 AI
+15. Resource Allocator / 资源分配 AI
+16. Incentive Designer / 激励设计 AI
+17. Decision Explainer / 决策解释 AI
+18. Governance Auditor / 治理审计 AI
 
-补充：Agent Adapter 不是第 11 个 AI 同事，而是连接 Copilot、Codex、Claude Code、Cursor、内部 agent 的外部 agent 适配层。
+补充：Agent Adapter 不是独立 AI 同事，而是连接 Copilot、Codex、Claude Code、Cursor、内部 agent 的外部 agent 适配层。
 
 ## 当前核心设计判断
 
 - AI 同事不是功能菜单，而是具备稳定身份、职责边界、工具权限、协作规则和评价指标的数字研发成员。
-- AI 原生工作空间的核心对象不只是文档，而是需求、任务、分支、PR、测试、发布、事故、记忆、规则和指标组成的研发对象图谱。
-- 人类应从执行者转为目标设定者、边界控制者和关键决策者。
+- AI 原生工作空间的核心对象不只是文档，而是需求、任务、分支、PR、测试、发布、事故、记忆、规则、指标和决策图谱组成的研发对象系统。
+- 人类应从执行者转为目标设定者、边界控制者、关键决策者、监督者和干预者。
 - 所有高风险操作必须最小权限、可审计、可回滚、有人类审批。
-- 评价 AI 研发系统不能只看编码 benchmark，而要看真实研发效率、质量、成本和风险。
+- 评价 AI 研发系统不能只看编码 benchmark，而要看真实研发效率、质量、成本、风险、可解释性和长期稳定性。
 - 多 AI 并行需要 Coordinator 负责任务锁、交接、冲突检测和升级机制。
 - 软件研发场景需要单独的 Security & Compliance Sentinel，而不是把安全职责完全分散给 Reviewer。
 - AI 同事设计应采用角色 × 自治等级：角色决定职责边界，自治等级决定工具权限，对象状态决定下一步行动，风险等级决定是否需要人类审批。
-- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill 设置来源、置信度、风险等级、审批要求和关联对象。
+- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill、AgentSession、ActionIntent、DeliveryContract、DecisionGraph 设置来源、置信度、风险等级、审批要求和关联对象。
 - 所有高风险工具调用都应先结构化为 ActionIntent，再经过风险分级、dry-run、影响范围分析、回滚计划和审批。
 - 外部 coding agent 应被视为可插拔 worker，并通过 Agent Adapter 接入 Moxt 的对象协议、权限系统和审计链路。
 - 长生命周期 agent 必须纳入 Lifecycle Control Plane，支持 TTL、健康检查、kill fast、资源回收和幽灵任务清理。
 - Moxt 应增加 Task Structuring Engine，将模糊需求转为 TaskGraph、SemanticScope、验收标准、依赖关系和风险标签。
 - 文件级权限不足，需要 Semantic Permission Layer 识别 auth、billing、migration、permission 等语义风险。
+- Delivery Contract 与 Delivery Auditor 应成为判断“PR 是否真的完成目标”的核心机制。
+- Task Critic 与 Task Evolution Log 应帮助系统区分 task failure、execution failure、verification failure，并推动任务持续收敛。
+- Strategy Layer、Economic Layer、Incentive Layer、Interpretability & Governance Layer 分别解决全局最优、资源最优、行为对齐和可信治理问题。
 
 ## 后续研究重点
 
-1. 设计 Task Graph 自动生成算法（从 PR / issue 学习）。
-2. 设计 Semantic Permission taxonomy（语义权限分类体系）。
-3. 设计 reward hacking 检测机制。
-4. 建立“Task → Failure → 修正”的闭环系统。
-5. 研究如何将 Task Architect 半自动化（human-in-the-loop）。
-6. 设计 Agent Reputation System 与组织内 benchmark。
-7. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile 等对象规范。
+1. 设计 Decision Graph 存储与查询结构：图数据库 vs event log。
+2. 设计 Governance Policy DSL，定义权限、审计、解释、审批和软/硬治理规则。
+3. 设计 AI 同事角色合并与最小化方案，避免角色过度膨胀。
+4. 把当前 18 类 AI 同事压缩成 MVP 版本的 5-7 个核心数字员工。
+5. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory。
+6. 设计组织内 benchmark 与 Agent Reputation System。
+7. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile、DeliveryContract、TaskEvolutionLog、StrategySnapshot、IncentiveProfile、DecisionGraph 等对象规范。
