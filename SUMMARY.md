@@ -34,6 +34,7 @@
 - [07:28 - MOTX/Moxt 软件研发范式研究增量记录：Interpretability & Governance Layer](logs/2026-05-02/07-28.md)
 - [08:28 - MOTX/Moxt 软件研发范式研究增量记录：AI Engineering Control Plane](logs/2026-05-02/08-28.md)
 - [09:28 - MOTX/Moxt 软件研发范式研究增量记录：TaskGraph Runtime 与可控搜索验证系统](logs/2026-05-02/09-28.md)
+- [10:27 - MOTX/Moxt 软件研发范式研究增量记录：Delegation Control Plane 与可验证委派层](logs/2026-05-02/10-27.md)
 
 ## 当前阶段性结论
 
@@ -46,6 +47,8 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 最新综合结论：Moxt 的核心正在从 Agent 管理演进为 Task + Agent + Constraint 三位一体系统，并进一步演进为可执行、可验证、可收敛、可优化、可对齐、可解释的 AI 工程组织操作系统。
 
 最新推进：Moxt 的核心不只是管理 agent，而是把软件研发转化为一个可控的搜索与验证系统。TaskGraph 不应只是任务列表，而应成为 DAG + Runtime State + Budget + Risk + Agent Binding 的调度运行时。
+
+最新收敛：Moxt 应成为 AI Engineering Delegation & Verification Workspace，通过 DelegationSpec 把任务委派给外部 / 内部 coding agent，并用 DeliveryContract、RiskBudget、Agent Reputation 和人类审批完成可控收敛。
 
 ## 当前推荐 AI 同事组合
 
@@ -85,7 +88,7 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 - 多 AI 并行需要 Coordinator 负责任务锁、交接、冲突检测和升级机制。
 - 软件研发场景需要单独的 Security & Compliance Sentinel，而不是把安全职责完全分散给 Reviewer。
 - AI 同事设计应采用角色 × 自治等级：角色决定职责边界，自治等级决定工具权限，对象状态决定下一步行动，风险等级决定是否需要人类审批。
-- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill、AgentSession、ActionIntent、DeliveryContract、DecisionGraph 设置来源、置信度、风险等级、审批要求和关联对象。
+- Moxt 工作空间应采用统一研发对象协议，为 Goal、Requirement、Design、Task、PR、Test、Release、Incident、Memory、Rule、Skill、AgentSession、ActionIntent、DeliveryContract、DecisionGraph、DelegationSpec 设置来源、置信度、风险等级、审批要求和关联对象。
 - 所有高风险工具调用都应先结构化为 ActionIntent，再经过风险分级、dry-run、影响范围分析、回滚计划和审批。
 - 外部 coding agent 应被视为可插拔 worker，并通过 Agent Adapter 接入 Moxt 的对象协议、权限系统和审计链路。
 - 长生命周期 agent 必须纳入 Lifecycle Control Plane，支持 TTL、健康检查、kill fast、资源回收和幽灵任务清理。
@@ -95,14 +98,16 @@ Moxt 在软件研发领域的最佳切入点不是做“又一个代码编辑器
 - Task Critic 与 Task Evolution Log 应帮助系统区分 task failure、execution failure、verification failure，并推动任务持续收敛。
 - Strategy Layer、Economic Layer、Incentive Layer、Interpretability & Governance Layer 分别解决全局最优、资源最优、行为对齐和可信治理问题。
 - TaskGraph Runtime 是下一阶段核心突破点：它需要支持动态插入节点、执行中重新拆任务、候选 PR 自动评分、失败后任务演化，以及映射到 GitHub issue / PR / check。
+- DelegationSpec 是 Moxt 进入“可验证委派层”的关键对象：它定义任务类型、委派模式、候选 agent、上下文包、权限预算、风险预算、验证契约、超时策略和期望产物。
+- Moxt 不应默认选择“第一个完成的 agent”，而应根据 DeliveryContract、风险、成本、可维护性、测试信心和 Agent Reputation 综合选择候选结果。
 
 ## 后续研究重点
 
-1. 设计 TaskGraph Runtime：DAG、Runtime State、Budget、Risk、Agent Binding、动态插入节点。
-2. 设计 Candidate PR 评分模型：quality、risk、cost、diff size、test confidence、delivery contract confidence。
-3. 设计 GitHub 映射方案：TaskGraph 如何落到 issue、branch、draft PR、check run、review、release。
-4. 设计 Governance Policy DSL，定义权限、审计、解释、审批和软/硬治理规则。
-5. 设计 AI 同事角色合并与最小化方案，避免角色过度膨胀。
-6. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory。
-7. 设计组织内 benchmark 与 Agent Reputation System。
-8. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile、DeliveryContract、TaskEvolutionLog、StrategySnapshot、IncentiveProfile、DecisionGraph 等对象规范。
+1. 设计 Agent Reputation System：任务类型画像、成功率、失败模式、上下文敏感性、成本和风险倾向。
+2. 设计 TaskGraph Runtime：DAG、Runtime State、Budget、Risk、Agent Binding、动态插入节点。
+3. 设计 Candidate PR 评分模型：quality、risk、cost、diff size、test confidence、delivery contract confidence。
+4. 设计 GitHub 映射方案：TaskGraph 如何落到 issue、branch、draft PR、check run、review、release。
+5. 设计 Governance Policy DSL，定义权限、审计、解释、审批和软/硬治理规则。
+6. 设计 AI 同事角色合并与最小化方案，避免角色过度膨胀。
+7. 设计 `.moxt/` 仓库规范：handoff、taskgraph、delivery-contract、risk-budget、decision-log、memory、delegation-spec。
+8. 继续细化 Agent Adapter、ActionIntent、RiskBudget、AgentLifecycle、PRRiskProfile、DeliveryContract、TaskEvolutionLog、StrategySnapshot、IncentiveProfile、DecisionGraph、DelegationSpec 等对象规范。
